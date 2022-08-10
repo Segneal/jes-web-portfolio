@@ -7,13 +7,13 @@ export default function NavBar() {
         <a href="/">Home</a>
       </div>
       <div className="header-nav-item">
-        <a href="/#">Events</a>
+        <a href="/events">Events</a>
       </div>
       <div className="header-nav-item">
-        <a href="/#">Galleries</a>
+        <a href="/galleries">Galleries</a>
       </div>
       <div className="header-nav-item">
-        <a href="/About">About Me</a>
+        <a href="/about">About Me</a>
       </div>
     </div>
   );
