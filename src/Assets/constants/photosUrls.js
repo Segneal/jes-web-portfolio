@@ -1,5 +1,4 @@
 const photosUrls = [
-  "https://res.cloudinary.com/segneal/image/upload/v1660169317/jesi-website/1_xi8uxo.jpg",
   "https://res.cloudinary.com/segneal/image/upload/v1660169317/jesi-website/2_gr4fbz.jpg",
   "https://res.cloudinary.com/segneal/image/upload/v1660169312/jesi-website/9_kqle0b.jpg",
   "https://res.cloudinary.com/segneal/image/upload/v1660169312/jesi-website/7_opr0qg.jpg",

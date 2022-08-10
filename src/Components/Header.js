@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className="header-wrapper flex">
       <div className="header-container">
-        <a href="/#" className="header-title">
+        <a href="/" className="header-title">
           Irene Vallejo
         </a>
         <NavBar />

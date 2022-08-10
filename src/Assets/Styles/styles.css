@@ -125,6 +125,11 @@ body {
   width: 100%;
 }
 
+.about-wrapper {
+  flex-direction: column;
+  gap: 20px;
+}
+
 .about-title {
   font-size: 3rem;
   color: var(--gray-200);
