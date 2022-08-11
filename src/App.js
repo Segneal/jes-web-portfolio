@@ -14,9 +14,9 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/events" element={<Event />} />
-          <Route path="/galleries" element={<Gallery />} />
+          <Route path="about" element={<About />} />
+          <Route path="events" element={<Event />} />
+          <Route path="galleries" element={<Gallery />} />
         </Routes>
         <ToTopButton />
       </div>
