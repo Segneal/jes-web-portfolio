@@ -29,8 +29,9 @@ export default function ToTopButton() {
   };
 
   return (
-    <div>
-      <button className={`button-scroller ${visible}`}>Top</button>;
-    </div>
+    <></>
+    // <div className="button-to-top">
+    //   ^<button className="button-scroller"></button>
+    // </div>
   );
 }

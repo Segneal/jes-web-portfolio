@@ -3,11 +3,11 @@ import Foto from "../Assets/Images/MainPhoto.JPG";
 export default function About() {
   return (
     <div className="about-wrapper">
-      <div className="about-image">
-        <img src={Foto} alt=""></img>
-      </div>
+      <h1 className="about-title">A model based in Argentina</h1>
       <div className="about-description">
-        <h1 className="about-title">A model based in Argentina</h1>
+        <div className="about-image">
+          <img src={Foto} alt=""></img>
+        </div>
         <p>
           Ea reprehenderit mollit dolore cupidatat ad est cillum deserunt.
           Tempor excepteur esse aliquip dolor cupidatat pariatur mollit

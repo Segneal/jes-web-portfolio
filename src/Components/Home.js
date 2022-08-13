@@ -1,4 +1,6 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 import photosUrls from "../Assets/constants/photosUrls";
 
 export default function Home() {
@@ -9,7 +11,7 @@ export default function Home() {
       console.log(photo);
       return (
         <div key={idx} className="grid-photo-item">
-          <img src={photo} alt="" loading="lazy"></img>
+          <LazyLoadImage src={photo} alt="" effect="opacity" />
         </div>
       );
     });
