@@ -1,7 +1,7 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
-import photosUrls from "../Assets/constants/photosUrls";
+import photosUrls from "../../Assets/services/photosUrls";
 
 export default function Home() {
   const photos = photosUrls;

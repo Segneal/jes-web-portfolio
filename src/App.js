@@ -1,11 +1,11 @@
-import Header from "./Components/Header";
 import "./Assets/Styles/styles.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import ToTopButton from "./Components/ToTopButton";
-import Home from "./Components/Home";
-import About from "./Components/About";
-import Gallery from "./Components/Gallery";
-import Event from "./Components/Event";
+import Home from "./Components/pages/Home";
+import About from "./Components/pages/About";
+import Gallery from "./Components/pages/Gallery";
+import Event from "./Components/pages/Event";
+import Header from "./Components/UI/Header";
+import ToTopButton from "./Components/UI/ToTopButton";
 
 function App() {
   return (

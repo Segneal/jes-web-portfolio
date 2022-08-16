@@ -1,5 +1,5 @@
 import React from "react";
-import Foto from "../Assets/Images/MainPhoto.JPG";
+import Foto from "../../Assets/Images/MainPhoto.JPG";
 export default function About() {
   return (
     <div className="about-wrapper">
