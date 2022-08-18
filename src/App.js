@@ -2,10 +2,10 @@ import "./Assets/Styles/styles.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Components/pages/Home";
 import About from "./Components/pages/About";
-import Gallery from "./Components/pages/Gallery";
 import Event from "./Components/pages/Event";
 import Header from "./Components/UI/Header";
 import ToTopButton from "./Components/UI/ToTopButton";
+import Gallery from "./Components/pages/Gallery/Gallery";
 
 function App() {
   return (

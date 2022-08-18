@@ -1,17 +1,18 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
-import photosUrls from "../../Assets/services/photosUrls";
+import useGetGalleries from "../../Assets/services/useGetGalleries";
 
+const GALLERIE = "jesi-website";
 export default function Home() {
-  const photos = photosUrls;
+  const { galleries } = useGetGalleries();
 
   const displayPhotos = () => {
-    return photos.map((photo, idx) => {
-      console.log(photo);
+    console.log(galleries);
+    return galleries[GALLERIE]?.map((photo, idx) => {
       return (
         <div key={idx} className="grid-photo-item">
-          <LazyLoadImage src={photo} alt="" effect="opacity" />
+          <img src={photo.secure_url} alt="" loading="lazy" />
         </div>
       );
     });

@@ -102,7 +102,7 @@ body {
   height: 100vh;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.9);
-  transition: margin-left 0.15s ease-in-out;
+  transition: margin-left 0.25s ease-in-out;
 }
 
 .navbar-modal-active {
@@ -132,8 +132,8 @@ body {
   border-radius: 6px;
 }
 
-.menu-icon:hover {
-  background-color: var(--gray-100);
+.menu-icon:active {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .menu-icon img {
@@ -182,6 +182,11 @@ body {
   min-width: 500px;
   transition: all 0.2s ease-in-out;
   filter: brightness(100%);
+  background-color: red;
+}
+
+.grid-small {
+  width: 10% !important;
 }
 
 .grid-photo-item:hover {
@@ -247,12 +252,24 @@ body {
   font-family: Noto Sans, sans-serif;
 }
 
+.thumbnail-title {
+  color: var(--gray-200);
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  font-family: Noto Sans, sans-serif;
+  font-size: 1rem;
+}
 @media screen and (max-width: 760px) {
   .grid-photo-wrapper {
     padding-top: 2rem;
   }
   .grid-photo-item {
     min-width: 300px;
+  }
+
+  .grid-small {
+    min-width: 200px;
   }
 
   .header-nav {
