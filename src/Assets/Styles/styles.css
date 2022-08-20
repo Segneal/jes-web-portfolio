@@ -177,16 +177,91 @@ body {
 }
 
 .grid-photo-item {
-  width: 30%;
-  height: 20%;
+  width: 28%;
   min-width: 500px;
   transition: all 0.2s ease-in-out;
   filter: brightness(100%);
-  background-color: red;
+  box-shadow: 1px 3px 7px rgba(15, 15, 15, 0.7);
 }
 
-.grid-small {
-  width: 10% !important;
+.grid-photo-item img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.album-photo-wrapper {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem;
+  width: 100%;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.album-container {
+  display: grid;
+  text-align: center;
+  grid-template-rows: 80% 20%;
+  width: 30%;
+  height: 300px;
+  object-fit: stretch;
+  overflow: hidden;
+  min-width: 300px;
+  border-radius: 25px;
+  filter: brightness(100%);
+  box-shadow: 1px 3px 7px var(--gray-200);
+  transition: all 0.2s ease-in-out;
+  min-width: 420px;
+}
+.album-thumbnail {
+  text-align: center;
+}
+.album-thumbnail img {
+  width: 100%;
+  margin-top: -3rem;
+}
+
+.album-container h1 {
+  font-family: Noto Sans, sans-serif;
+  font-size: 1.25rem;
+  margin-top: -1rem;
+  padding-top: 0.5rem;
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  animation: rotate 0.2s ease-in, scale 0.2s infinite;
+}
+
+.album-container:hover {
+  transform: scale(1.1);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.album-container:hover {
+  filter: brightness(70%);
+}
+
+.grid-album img {
+  width: 100%;
+}
+
+.album-container::before {
+  content: "";
+  position: absolute;
+  border-bottom: 70px solid transparent;
+  border-left: 500px solid rgba(15, 15, 15, 0.7);
 }
 
 .grid-photo-item:hover {
@@ -197,11 +272,6 @@ body {
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.grid-photo-item img {
-  height: 100%;
-  width: 100%;
-}
-
 .about-wrapper {
   height: 100%;
   display: flex;
@@ -256,7 +326,7 @@ body {
   color: var(--gray-200);
   text-align: center;
   width: 100%;
-  height: 30px;
+  height: 50px;
   font-family: Noto Sans, sans-serif;
   font-size: 1rem;
 }
@@ -336,5 +406,15 @@ body {
 
   .about-description p {
     font-size: 0.75rem;
+  }
+
+  .album-container {
+    min-width: 300px;
+  }
+
+  .album-thumbnail {
+    display: block;
+    margin-top: 3rem;
+    height: 100%;
   }
 }

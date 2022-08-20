@@ -14,14 +14,15 @@ export default function Gallery() {
       let albumName = album[0].split("/").splice(1, 1).join().replace("-", " ");
       let thumbnail = album[1]?.[0].url;
       return (
-        <div key={idx} className="grid-photo-item grid-small">
-          <img src={thumbnail}></img>
+        <div className="album-container">
+          <div key={idx} className="album-thumbnail">
+            <img src={thumbnail}></img>
+          </div>
           <h1 className="thumbnail-title">{albumName}</h1>
         </div>
       );
-      // return <Album key={idx} album={album} />;
     });
   };
 
-  return <div className="grid-photo-wrapper">{showGalleries()}</div>;
+  return <div className="album-photo-wrapper">{showGalleries()}</div>;
 }
