@@ -1,16 +1,10 @@
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useParams } from "react-router-dom";
 
-export default function Album({ album }) {
-  console.log(album);
+export default function Album(props) {
+  const params = useParams();
   const showAlbum = () => {
-    // return album?.map((photo, idx) => {
-    //   return (
-    //     <div key={idx} className="grid-photo-item">
-    //       <LazyLoadImage src={photo.secure_url} alt="" effect="opacity" />
-    //     </div>
-    //   );
-    // });
+    console.log({ ...props });
   };
 
   return <div>{showAlbum()}</div>;

@@ -6,14 +6,14 @@ export default function DesktopNavbar() {
       <div className="nav-item">
         <a href="/">Home</a>
       </div>
+      {/* <div className="nav-item">
+        <a href="/events">Events</a>
+      </div> */}
       <div className="nav-item">
-        <a href="events">Events</a>
+        <a href="/galleries">Galleries</a>
       </div>
       <div className="nav-item">
-        <a href="galleries">Galleries</a>
-      </div>
-      <div className="nav-item">
-        <a href="about">About Me</a>
+        <a href="/about">About Me</a>
       </div>
     </div>
   );
