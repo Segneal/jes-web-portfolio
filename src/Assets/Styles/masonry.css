@@ -1,0 +1,84 @@
+.grid {
+  --gap: 1.5em;
+  --columns: 5;
+  max-width: 90%;
+  margin: 0 auto;
+  padding-top: 2rem;
+  display: column;
+  columns: var(--columns);
+  gap: var(--gap);
+}
+
+.grid > * {
+  break-inside: avoid;
+  margin-bottom: var(--gap);
+}
+
+.grid-album-image {
+  overflow: hidden;
+  box-shadow: 1px 3px 7px black;
+}
+
+.grid-album-image img {
+  display: block;
+  filter: brightness(100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.grid-album-image:hover img {
+  filter: brightness(90%);
+  transform: scale(1.2);
+}
+
+@supports (grid-template-rows: masonry) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: masonry;
+    grid-auto-flow: dense;
+  }
+
+  .grid > * {
+    margin-bottom: 0em;
+  }
+}
+
+.featured {
+  grid-column: span 2;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, var(--spacer));
+}
+
+img {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 1600px) {
+  .grid {
+    --gap: 1.5em;
+    --columns: 4;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .grid {
+    --gap: 1.5em;
+    --columns: 3;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .grid {
+    --gap: 1.5em;
+    --columns: 2;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .grid {
+    --gap: 1em;
+    --columns: 1;
+  }
+}

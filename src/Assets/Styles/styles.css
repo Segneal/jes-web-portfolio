@@ -8,6 +8,7 @@
 :root {
   --gray-100: #515151;
   --gray-200: #434343;
+  --gray-300: #333333;
   --gray-900: #181818;
 }
 
@@ -237,20 +238,12 @@ body {
   color: whitesmoke;
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
-  animation: RotateX 0.4s ease-in, scale 0.2s infinite;
+  animation: scale 0.2s infinite;
 }
 
 .album-container:hover {
   transform: scale(1.1);
-}
-
-@keyframes RotateX {
-  0% {
-    transform: rotateX(0deg);
-  }
-  100% {
-    transform: rotateX(360deg);
-  }
+  color: white;
 }
 
 .album-container:hover {
@@ -299,23 +292,32 @@ body {
   padding-top: 2rem;
   display: flex;
   text-align: center;
+  place-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   flex-direction: row;
 }
 
 .about-image {
+  box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.7);
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  margin-right: auto;
   width: 37%;
-  padding-right: 1rem;
 }
 
 .about-image img {
-  width: 90%;
+  width: 100%;
   min-width: 220px;
 }
 .about-description p {
   width: 55%;
   height: 100%;
   margin-right: auto;
+  margin-left: auto;
   font-family: Noto Sans, sans-serif;
   font-size: 1.25rem;
 }
@@ -333,6 +335,39 @@ body {
   height: 50px;
   font-family: Noto Sans, sans-serif;
   font-size: 1rem;
+}
+
+.album-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  place-items: center;
+  justify-content: center;
+  overflow: wrap;
+}
+
+.album-title {
+  margin-top: 3rem;
+  font-size: 3rem;
+  font-family: Abel, sans-serif;
+  color: var(--gray-200);
+}
+
+.previous-page-button {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  bottom: 5rem;
+  transition: all 0.45s ease-in-out;
+}
+.previous-page-button:active {
+  background-color: var(--gray-100);
+}
+.previous-page-button:hover {
+  filter: brightness(90%);
 }
 
 .loading {
@@ -398,15 +433,12 @@ body {
   }
   .about-description {
     flex-direction: column;
-  }
-  .about-image {
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
   }
 
   .about-image img {
-    width: 220px;
+    width: 100%;
   }
 
   .about-description p {
@@ -415,6 +447,14 @@ body {
     padding-top: 0.5rem;
     width: 90%;
     font-size: 1rem;
+  }
+
+  .wide {
+    grid-column: span 2;
+  }
+
+  .tall {
+    grid-row: span 2;
   }
 }
 
@@ -461,5 +501,11 @@ body {
   .loading-dot {
     width: 25px;
     height: 25px;
+  }
+
+  .album-title {
+    margin-top: 0;
+    font-size: 1.5rem;
+    width: 100%;
   }
 }

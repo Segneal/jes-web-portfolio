@@ -7,6 +7,7 @@ const app = express();
 app.use(cors());
 
 const cloudinary = require("cloudinary");
+const IMAGE_QUALITY = "q_auto:good";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -17,7 +18,7 @@ cloudinary.config({
 app.get("/getGalleries", async (req, res) => {
   let galleries = [];
   await cloudinary.v2.api.resources(
-    { max_results: 500 },
+    { max_results: 500, quality_override: "good" },
     function (error, result) {
       //group by folder
       galleries = result.resources.reduce(function (r, a) {
@@ -29,10 +30,6 @@ app.get("/getGalleries", async (req, res) => {
   );
   console.log(galleries);
   res.json(galleries);
-});
-
-app.get("/api", (req, res) => {
-  res.json({ data: "data" });
 });
 
 app.listen(PORT, () => {

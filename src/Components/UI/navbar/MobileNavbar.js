@@ -31,16 +31,16 @@ export default function MobileNavbar() {
       <div className={`navbar-modal ${shouldShowModal()}`}>
         <div className="mobile-navbar">
           <div className="nav-item mobile-item">
-            <a href="/">Home</a>
+            <a href="/">Principal</a>
           </div>
           {/* <div className="nav-item mobile-item">
             <a href="/events">Events</a>
           </div> */}
           <div className="nav-item mobile-item">
-            <a href="/galleries">Galleries</a>
+            <a href="/galleries">Galerias</a>
           </div>
           <div className="nav-item mobile-item">
-            <a href="/about">About Me</a>
+            <a href="/about">Sobre mi</a>
           </div>
         </div>
       </div>

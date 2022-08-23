@@ -1,14 +1,13 @@
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
-import useGetGalleries from "../../Assets/services/useGetGalleries";
+import useGetGalleries from "../../services/useGetGalleries";
+import Loading from "../UI/Loading";
 
 const GALLERIE = "jesi-website";
 export default function Home() {
-  const { galleries } = useGetGalleries();
+  const { galleries, isLoading } = useGetGalleries();
 
   const displayPhotos = () => {
-    console.log(galleries);
     return galleries[GALLERIE]?.map((photo, idx) => {
       return (
         <div key={idx} className="grid-photo-item">
@@ -18,5 +17,9 @@ export default function Home() {
     });
   };
 
-  return <div className="grid-photo-wrapper flex">{displayPhotos()}</div>;
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <div className="grid-photo-wrapper flex">{displayPhotos()}</div>
+  );
 }

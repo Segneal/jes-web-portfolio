@@ -1,37 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useGetGalleries from "../../../Assets/services/useGetGalleries";
 import Loading from "../../UI/Loading";
+import useGetGalleries from "../../../services/useGetGalleries";
+
+const formatTitle = (album) => {
+  let albumTitle = album[0].split("/").splice(1, 1).join().replace("-", " ");
+  let thumbnail = album[1]?.[0].url;
+  let albumName = album[0].split("/")[1];
+  return { albumTitle, thumbnail, albumName };
+};
 
 export default function Gallery() {
-  const { galleries, loading } = useGetGalleries();
+  const { galleries, isLoading } = useGetGalleries();
 
   const showGalleries = () => {
     const albums = Object.entries(galleries);
     albums.pop();
     return albums?.map((album, idx) => {
-      let albumName = album[0].split("/").splice(1, 1).join().replace("-", " ");
-      let thumbnail = album[1]?.[0].url;
+      const { albumTitle, thumbnail, albumName } = formatTitle(album);
       return (
-        <div key={idx} className="album-container">
-          <Link to={`galleries/${idx}`}>
-            <div className="album-thumbnail">
-              <img src={thumbnail} loading="lazy"></img>
-            </div>
-          </Link>
-          <h1 className="thumbnail-title">{albumName}</h1>
-        </div>
+        <Link to={`${albumName}`} key={idx} className="album-container">
+          <div className="album-thumbnail">
+            <img src={thumbnail} alt="" loading="lazy"></img>
+          </div>
+          <h1 className="thumbnail-title">{albumTitle}</h1>
+        </Link>
       );
     });
   };
 
-  return (
-    <div>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div className="album-photo-wrapper">{showGalleries()}</div>
-      )}
-    </div>
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <div className="album-photo-wrapper">{showGalleries()}</div>
   );
 }
