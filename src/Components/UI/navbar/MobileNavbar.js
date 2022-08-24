@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import MenuIcon from "../../../Assets/Images/menu.png";
 
 export default function MobileNavbar() {
@@ -18,7 +19,7 @@ export default function MobileNavbar() {
   };
 
   return (
-    <>
+    <div className="mobile-navbar-container ">
       <div className="menu-icon" onClick={toggleShowNavbar}>
         <img src={MenuIcon}></img>
       </div>
@@ -30,20 +31,26 @@ export default function MobileNavbar() {
       )}
       <div className={`navbar-modal ${shouldShowModal()}`}>
         <div className="mobile-navbar">
-          <div className="nav-item mobile-item">
-            <a href="/">Principal</a>
+          <div
+            className="nav-item mobile-item"
+            onClick={() => setShowNavBar(false)}
+          >
+            <Link to="/">Home</Link>
           </div>
-          {/* <div className="nav-item mobile-item">
-            <a href="/events">Events</a>
-          </div> */}
-          <div className="nav-item mobile-item">
-            <a href="/galleries">Galerias</a>
+          <div
+            className="nav-item mobile-item"
+            onClick={() => setShowNavBar(false)}
+          >
+            <Link to="/galleries">Galleries</Link>
           </div>
-          <div className="nav-item mobile-item">
-            <a href="/about">Sobre mi</a>
+          <div
+            className="nav-item mobile-item"
+            onClick={() => setShowNavBar(false)}
+          >
+            <Link to="/about">About Me</Link>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

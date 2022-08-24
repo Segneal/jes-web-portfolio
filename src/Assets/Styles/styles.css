@@ -85,6 +85,13 @@ body {
 
 .mobile-navbar {
   margin-top: 10rem;
+  font-size: 2rem;
+  font-weight: bolder;
+  display: flex;
+  place-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
 .mobile-item a {
@@ -243,7 +250,6 @@ body {
 
 .album-container:hover {
   transform: scale(1.1);
-  color: white;
 }
 
 .album-container:hover {
@@ -346,22 +352,29 @@ body {
   overflow: wrap;
 }
 
+.album-header {
+  display: flex;
+  text-align: center;
+  place-items: center;
+}
 .album-title {
-  margin-top: 3rem;
-  font-size: 3rem;
+  margin-top: 1rem;
+  font-size: 2rem;
   font-family: Abel, sans-serif;
   color: var(--gray-200);
 }
 
 .previous-page-button {
+  font-family: Abel, sans-serif;
+  font-size: 1.5rem;
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 265px;
+  right: 5%;
   width: 100px;
   height: 40px;
   border-radius: 5px;
   bottom: 5rem;
-  transition: all 0.45s ease-in-out;
+  transition: background-color 0.45s ease-in-out;
 }
 .previous-page-button:active {
   background-color: var(--gray-100);
@@ -449,12 +462,12 @@ body {
     font-size: 1rem;
   }
 
-  .wide {
-    grid-column: span 2;
-  }
-
-  .tall {
-    grid-row: span 2;
+  .previous-page-button {
+    position: absolute;
+    font-size: 1rem;
+    width: 70px;
+    top: 100px;
+    right: 10%;
   }
 }
 
@@ -503,9 +516,21 @@ body {
     height: 25px;
   }
 
+  .album-header {
+    font-size: 0.75rem;
+    text-align: left;
+  }
   .album-title {
     margin-top: 0;
     font-size: 1.5rem;
     width: 100%;
+  }
+
+  .previous-page-button {
+    position: absolute;
+    font-size: 0.75rem;
+    width: 50px;
+    top: 100px;
+    right: 5%;
   }
 }

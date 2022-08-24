@@ -1,19 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function DesktopNavbar() {
   return (
     <div className="header-nav flex center">
       <div className="nav-item">
-        <a href="/">Principal</a>
+        <Link to="/">Principal</Link>
       </div>
-      {/* <div className="nav-item">
-        <a href="/events">Events</a>
-      </div> */}
+
       <div className="nav-item">
-        <a href="/galleries">Galerias</a>
+        <Link to="/galleries">Galerias</Link>
       </div>
       <div className="nav-item">
-        <a href="/about">Sobre mi</a>
+        <Link to="/about">Sobre mi</Link>
       </div>
     </div>
   );

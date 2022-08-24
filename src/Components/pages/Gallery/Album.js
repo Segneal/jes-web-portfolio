@@ -1,35 +1,44 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import useGetGalleries from "../../../services/useGetGalleries";
 import "../../../Assets/Styles/masonry.css";
+import * as api from "../../../services/galleries";
+import Loading from "../../UI/Loading";
+import { useNavigate, useParams } from "react-router-dom";
+import { useQuery } from "react-query";
 
-const CURRENT_GALERIE_PREFIX = "photoshoots/";
+const HOUR = 1000 * 3600;
+const PREFIX = "photoshoots/";
 
 export default function Album() {
   const navigate = useNavigate();
   const { albumName } = useParams();
-  const { galleries, loading } = useGetGalleries();
-  const currentAlbum = CURRENT_GALERIE_PREFIX + albumName;
-  const pageTitle = albumName.replace("-", " ");
+  const { data, isLoading } = useQuery("current-album", api.getGalleries, {
+    staleTime: HOUR,
+  });
+  const curAlbum = PREFIX + albumName;
 
   const displayAlbum = () => {
-    return galleries[currentAlbum]?.map((photo, idx) => {
-      return (
-        <div key={idx} className="grid-album-image">
-          <img src={photo.url}></img>
-        </div>
-      );
+    return data?.map((photo, idx) => {
+      if (photo.folder === curAlbum) {
+        return (
+          <div key={idx} className="grid-album-image">
+            <img src={photo.url}></img>
+          </div>
+        );
+      }
     });
   };
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="album-wrapper">
-      <h1 className="album-title">{pageTitle}</h1>
+      <div className="album-header">
+        <h1 className="album-title">{albumName}</h1>
+        <button className="previous-page-button" onClick={() => navigate(-1)}>
+          Volver
+        </button>
+      </div>
       <div className="grid">{displayAlbum()}</div>
-      <button
-        className="previous-page-button"
-        onClick={() => navigate(-1)}
-      ></button>
     </div>
   );
 }
