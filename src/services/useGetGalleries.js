@@ -8,16 +8,18 @@ export default function useGetGalleries() {
 
   React.useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       await fetch(`http://localhost:5500/${GET_GALLERIES}`)
         .then((response) => response.json())
         .then((data) => {
           setGalleries(groupBy(data.resources));
         });
+      setIsLoading(false);
     };
     getData();
   }, []);
 
-  return { galleries, isLoading: false };
+  return { galleries, isLoading };
 }
 
 const groupBy = (arr) => {
