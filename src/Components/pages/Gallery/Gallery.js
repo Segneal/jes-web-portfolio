@@ -7,7 +7,6 @@ import { useQuery } from "react-query";
 import * as api from "../../../services/galleries";
 
 const HOUR = 1000 * 3600;
-const HOME_GALLERIE = "jesi-website";
 
 export default function Gallery() {
   const { data, isLoading } = useQuery("galerias", api.getGalleries, {
@@ -24,7 +23,7 @@ export default function Gallery() {
         <div key={idx} className="album-container">
           <Link to={`/galleries/${albumName}`}>
             <div className="album-thumbnail">
-              <img src={thumbnailUrl} loading="lazy"></img>
+              <img src={thumbnailUrl} loading="lazy" alt=""></img>
             </div>
           </Link>
           <h1 className="thumbnail-title">{albumName}</h1>

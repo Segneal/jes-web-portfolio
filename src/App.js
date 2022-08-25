@@ -7,14 +7,15 @@ import Header from "./Components/UI/Header";
 import Gallery from "./Components/pages/Gallery/Gallery";
 import Album from "./Components/pages/Gallery/Album";
 import NavBar from "./Components/UI/navbar/NavBar";
+import Footer from "./Components/UI/Footer";
 
 function App() {
   return (
     <>
-      <Router>
-        <Header />
-        <NavBar />
-        <div className="App">
+      <div className="App">
+        <Router>
+          <Header />
+          <NavBar />
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -22,8 +23,9 @@ function App() {
             <Route exact path="/galleries" element={<Gallery />} />
             <Route path="galleries/:albumName" element={<Album />} />
           </Routes>
-        </div>
-      </Router>
+          <Footer />
+        </Router>
+      </div>
     </>
   );
 }

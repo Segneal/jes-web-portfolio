@@ -19,13 +19,13 @@ export default function MobileNavbar() {
   };
 
   return (
-    <div className="mobile-navbar-container ">
+    <div className="mobile-navbar-container">
       <div className="menu-icon" onClick={toggleShowNavbar}>
-        <img src={MenuIcon}></img>
+        <img src={MenuIcon} alt=""></img>
       </div>
       {showNavBar && (
         <div
-          className="modal-overlay"
+          className="mobile-modal-overlay"
           onClick={() => setShowNavBar(false)}
         ></div>
       )}

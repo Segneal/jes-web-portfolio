@@ -1,38 +1,32 @@
 import React from "react";
 import {
+  Box,
+  Image,
   Modal,
-  Button,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   ModalContent,
-  useDisclosure,
-  ModalCloseButton,
+  ModalOverlay,
 } from "@chakra-ui/react";
 
-export default function ImageModal({ isOpen }) {
-  const { onOpen, onClose } = useDisclosure();
-
+export default function ImageModal({ currentPhoto, isOpen, onOpen, onClose }) {
   return (
-    <>
-      <Button onClick={onOpen}>Open Modal</Button>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody></ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
+    <Modal
+      size="full"
+      className="photo-modal"
+      isOpen={isOpen}
+      onClose={onClose}
+      bgColor="red.500"
+    >
+      <ModalOverlay onClick={onClose} bgColor="blackAlpha.800" />
+      <ModalContent
+        onClick={onClose}
+        bgColor="whiteAlpha.100"
+        className="photo-modal-content"
+        tabIndex="99999"
+      >
+        <Box className="modal-image" bgColor="red.100">
+          <Image src={currentPhoto} alt=""></Image>
+        </Box>
+      </ModalContent>
+    </Modal>
   );
 }
