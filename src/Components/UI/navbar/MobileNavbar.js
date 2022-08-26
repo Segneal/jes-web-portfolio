@@ -49,6 +49,12 @@ export default function MobileNavbar() {
           >
             <Link to="/about">About Me</Link>
           </div>
+          <div
+            className="nav-item mobile-item"
+            onClick={() => setShowNavBar(false)}
+          >
+            <Link to="/contact">Contacto</Link>
+          </div>
         </div>
       </div>
     </div>

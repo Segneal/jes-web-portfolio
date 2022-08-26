@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { formatUrl } from "../../../Assets/helpers/stringHelpers";
 import ImageModal from "../../UI/ImageModal";
-import { useDisclosure } from "@chakra-ui/react";
+import { Image, useDisclosure } from "@chakra-ui/react";
 
 const HOUR = 1000 * 3600;
 const PREFIX = "photoshoots/";
@@ -21,24 +21,27 @@ export default function Album() {
   const curAlbum = PREFIX + albumName;
   const [currentPhoto, setCurrentPhoto] = useState("");
   const openModal = (url) => {
-    onOpen();
     setCurrentPhoto(url);
+    onOpen();
   };
 
   const displayAlbum = () => {
-    return data?.map((photo, idx) => {
-      if (photo.folder === curAlbum) {
-        let url = formatUrl(photo);
-        return (
-          <div
-            key={idx}
-            className="grid-album-image"
-            onClick={() => openModal(url)}
-          >
-            <img src={url} alt=""></img>
-          </div>
-        );
-      }
+    data.pop();
+    return data[curAlbum]?.map((photo, idx) => {
+      let { thumbnailUrl, lowQualityThumnailUrl } = formatUrl(photo);
+      return (
+        <div
+          key={idx}
+          className="grid-album-image"
+          onClick={() => openModal(thumbnailUrl)}
+        >
+          <Image
+            src={thumbnailUrl}
+            alt={lowQualityThumnailUrl}
+            loading="lazy"
+          ></Image>
+        </div>
+      );
     });
   };
 

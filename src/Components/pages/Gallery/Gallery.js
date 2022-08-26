@@ -2,32 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../UI/Loading";
 import { formatThumnail } from "../../../Assets/helpers/stringHelpers";
-import { groupBy, removeAlbum } from "../../../Assets/helpers/arrayHelpers";
 import { useQuery } from "react-query";
 import * as api from "../../../services/galleries";
 
-const HOUR = 1000 * 3600;
-
 export default function Gallery() {
-  const { data, isLoading } = useQuery("galerias", api.getGalleries, {
-    staleTime: HOUR,
-  });
+  const { data, isLoading } = useQuery("galerias", api.getGalleries);
 
   const showGalleries = () => {
-    let galleries = groupBy(data);
-    const albums = Object.entries(galleries);
-    albums.pop();
+    const albums = Object.entries(data);
     return albums?.map((album, idx) => {
-      let { albumName, albumTitle, thumbnailUrl } = formatThumnail(album);
+      let { albumName, thumbnailUrl, lowQualityThumnailUrl } =
+        formatThumnail(album);
       return (
-        <div key={idx} className="album-container">
-          <Link to={`/galleries/${albumName}`}>
-            <div className="album-thumbnail">
-              <img src={thumbnailUrl} loading="lazy" alt=""></img>
-            </div>
-          </Link>
-          <h1 className="thumbnail-title">{albumName}</h1>
-        </div>
+        <Link key={idx} className="album-card" to={`/galleries/${albumName}`}>
+          <img
+            src={thumbnailUrl}
+            loading="lazy"
+            alt={lowQualityThumnailUrl}
+          ></img>
+          <h1>{albumName}</h1>
+        </Link>
       );
     });
   };

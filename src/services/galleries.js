@@ -1,8 +1,7 @@
 import axios from "axios";
-
-const api = axios.create({ baseURL: "http://localhost:5500" });
+import { groupBy } from "../Assets/helpers/arrayHelpers";
 
 export const getGalleries = async () => {
   const res = await axios.get("http://localhost:5500/getGalleries");
-  return await res.data.resources;
+  return await groupBy(res.data.resources);
 };

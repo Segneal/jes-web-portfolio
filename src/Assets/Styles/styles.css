@@ -21,7 +21,7 @@ a:active {
 }
 
 .App {
-  min-height: 100vh;
+  height: 100%;
   position: relative;
 }
 
@@ -46,6 +46,7 @@ a:active {
 body {
   display: block;
   background-color: #fff;
+  height: 100%;
 }
 
 .header-wrapper {
@@ -57,16 +58,20 @@ body {
   text-align: center;
   padding-top: 2rem;
 }
-.header-container * {
+
+.header-container {
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   letter-spacing: 0em;
+  position: relative;
 }
 
 .header-title {
   font-size: 3rem;
   font-weight: 400;
   font-family: Abel, sans-serif;
-  color: var(--gray-900);
+  color: var(--gray-300);
 }
 
 .header-nav {
@@ -75,7 +80,7 @@ body {
 }
 
 .nav-item {
-  padding-top: 2rem;
+  padding-top: 1rem;
   font-family: Noto Sans, sans-serif;
   position: relative;
 }
@@ -103,7 +108,6 @@ body {
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
 }
 .mobile-item a {
   font-size: 1.25rem !important;
@@ -221,6 +225,7 @@ body {
   margin: auto;
   padding: 5rem;
   width: 100%;
+  height: 80%;
   gap: 30px;
   flex-wrap: wrap;
 }
@@ -234,6 +239,7 @@ body {
 }
 
 .grid-photo-item img {
+  background-color: rgba(15, 15, 15, 0.7);
   display: block;
   height: 100%;
   width: 100%;
@@ -251,61 +257,48 @@ body {
   flex-wrap: wrap;
 }
 
-.album-container {
-  display: grid;
-  text-align: center;
-  grid-template-rows: 80% 20%;
-  width: 30%;
+.album-card {
+  width: 25%;
   height: 300px;
-  object-fit: stretch;
-  overflow: hidden;
   min-width: 300px;
+  box-shadow: 1px 3px 7px black;
   border-radius: 25px;
-  filter: brightness(100%);
-  box-shadow: 1px 3px 7px var(--gray-200);
+  object-position: 50% 30%;
+  overflow: hidden;
   transition: all 0.2s ease-in-out;
-  min-width: 420px;
-}
-
-.album-container:active {
-  filter: scale(1.2);
-}
-.album-thumbnail {
+  position: relative;
   text-align: center;
 }
-.album-thumbnail img {
-  width: 100%;
-  margin-top: -3rem;
+
+.album-card img {
+  transition: all 0.2s ease-in-out;
 }
 
-.album-container h1 {
-  font-family: Noto Sans, sans-serif;
+.album-card h1 {
   font-size: 1.25rem;
-  margin-top: -1rem;
-  padding-top: 0.5rem;
+  background-color: rgba(15, 15, 15, 0.7);
+  width: 100%;
+  position: absolute;
   color: whitesmoke;
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 100%;
-  animation: scale 0.2s infinite;
+  z-index: 5;
+  bottom: 20px;
+}
+.album-card:active {
+  transform: scale(1.2);
 }
 
-.album-container:hover {
+.album-card:hover {
   transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 6px 12px 27px black;
 }
-
-.album-container:hover {
-  filter: brightness(70%);
+.album-card:hover img {
+  filter: grayscale(90%);
+  transform: scale(1.1);
 }
 
 .grid-album img {
   width: 100%;
-}
-
-.album-container::before {
-  content: "";
-  position: absolute;
-  border-bottom: 70px solid transparent;
-  border-left: 500px solid rgba(15, 15, 15, 0.7);
 }
 
 .grid-photo-item:hover {
@@ -317,15 +310,17 @@ body {
   transition: all 0.5s ease;
 }
 .about-wrapper {
-  height: 100%;
   display: flex;
-  place-items: center;
-  margin: auto;
-  width: 100%;
   flex-direction: column;
+  place-items: center;
   text-align: center;
-  gap: 1rem;
-  padding-top: 2rem;
+  height: 100%;
+  width: 90%;
+  gap: 50px;
+  padding-top: 5rem;
+  font-family: Noto sans, sans-serif;
+  font-size: 1.5rem;
+  margin: auto;
 }
 
 .about-title {
@@ -333,17 +328,6 @@ body {
   text-decoration: underline;
   margin-left: auto;
   margin-right: auto;
-}
-
-.about-description {
-  padding-top: 2rem;
-  display: flex;
-  text-align: center;
-  place-items: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  flex-direction: row;
 }
 
 .about-image {
@@ -434,9 +418,9 @@ body {
 }
 
 .loading-dot {
-  width: 50px;
+  width: 2rem;
+  height: 2rem;
   padding-top: -5rem;
-  height: 50px;
   border-radius: 50%;
   background-color: var(--gray-100);
   animation: bounce 1s ease-in-out infinite;
@@ -464,11 +448,33 @@ body {
 }
 
 .footer-wrapper {
+  margin-top: 5rem;
   position: absolute;
-  height: 50px;
+  height: 100px;
   width: 100%;
-  background-color: red;
   bottom: 0;
+  display: flex;
+  place-items: center;
+  overflow: hidden;
+}
+
+.social-networks {
+  margin-left: 5rem;
+  width: 75px;
+  height: 75px;
+}
+
+.social-icon {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  width: 50px;
+  height: 50px;
+}
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 @media screen and (max-width: 760px) {
@@ -484,6 +490,8 @@ body {
   }
 
   .header-nav {
+    margin-top: -3rem;
+    padding-bottom: 1rem;
     gap: 10px;
   }
 
@@ -504,6 +512,7 @@ body {
   }
 
   .about-image img {
+    background-color: rgba(0, 0, 0, 0.9);
     width: 100%;
   }
 
@@ -527,6 +536,12 @@ body {
   .modal-image {
     height: auto;
     overflow: hidden;
+  }
+  .social-icon {
+    right: 30px;
+    top: 30px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -560,8 +575,8 @@ body {
     font-size: 0.75rem;
   }
 
-  .album-container {
-    min-width: 275px;
+  .album-card {
+    min-width: 300px;
   }
 
   .album-thumbnail {
@@ -592,5 +607,21 @@ body {
     height: 35px;
     top: 100px;
     right: 5%;
+  }
+  .social-icon {
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .about-wrapper p {
+    font-size: 1rem;
+    margin-top: -3rem;
+    margin-bottom: 1rem;
+    padding-inline: 0.5rem;
+  }
+  .about-wrapper p:last-child {
+    margin-bottom: 5rem;
   }
 }

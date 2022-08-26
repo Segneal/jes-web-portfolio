@@ -14,6 +14,9 @@ export default function DesktopNavbar() {
       <div className="nav-item">
         <Link to="/about">Sobre mi</Link>
       </div>
+      <div className="nav-item">
+        <Link to="/contact">Contacto</Link>
+      </div>
     </div>
   );
 }
