@@ -10,6 +10,7 @@ export default function Gallery() {
 
   const showGalleries = () => {
     const albums = Object.entries(data);
+    albums.pop();
     return albums?.map((album, idx) => {
       let { albumName, thumbnailUrl, lowQualityThumnailUrl } =
         formatThumnail(album);

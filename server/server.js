@@ -6,7 +6,6 @@ const app = express();
 app.use(cors());
 
 const cloudinary = require("cloudinary");
-const IMAGE_QUALITY = "q_auto:40";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
