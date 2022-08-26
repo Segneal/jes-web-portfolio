@@ -109,7 +109,7 @@
 @media screen and (max-width: 800px) {
   .contact-body {
     width: 90%;
-    height: 100vh;
+    height: 110vh;
     margin-top: -1em;
     margin-bottom: 1rem;
     flex-direction: column;
@@ -166,6 +166,9 @@
 }
 
 @media screen and (max-width: 480px) {
+  .contact-body {
+    height: 140vh;
+  }
   .contact-icons {
     font-size: 1rem;
   }
