@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../UI/Loading";
 import { formatThumnail } from "../../../Assets/helpers/stringHelpers";
-import { useQuery } from "react-query";
-import * as api from "../../../services/galleries";
+
+import useGalleries from "../../../services/useGalleries";
 
 export default function Gallery() {
-  const { data, isLoading } = useQuery("galerias", api.getGalleries);
+  const { data, isLoading } = useGalleries();
 
   const showGalleries = () => {
     const albums = Object.entries(data);

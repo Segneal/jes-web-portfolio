@@ -35,19 +35,19 @@ export default function MobileNavbar() {
             className="nav-item mobile-item"
             onClick={() => setShowNavBar(false)}
           >
-            <Link to="/">Home</Link>
+            <Link to="/">Principal</Link>
           </div>
           <div
             className="nav-item mobile-item"
             onClick={() => setShowNavBar(false)}
           >
-            <Link to="/galleries">Galleries</Link>
+            <Link to="/galleries">Galerias</Link>
           </div>
           <div
             className="nav-item mobile-item"
             onClick={() => setShowNavBar(false)}
           >
-            <Link to="/about">About Me</Link>
+            <Link to="/about">Sobre Mi</Link>
           </div>
           <div
             className="nav-item mobile-item"

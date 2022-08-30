@@ -8,16 +8,13 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 5rem;
-  border: 1px solid black;
   border-radius: 25px;
-  background-clip: padding-box;
   overflow: hidden;
   box-shadow: 1px 3px 7px black;
   color: white;
   font-size: 1.5rem;
   font-family: "Poppins", Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  margin-bottom: 2rem;
 }
 
 .contact-form {
@@ -109,7 +106,7 @@
 @media screen and (max-width: 800px) {
   .contact-body {
     width: 90%;
-    height: 110vh;
+    height: 1000px;
     margin-top: -1em;
     margin-bottom: 1rem;
     flex-direction: column;
@@ -166,9 +163,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .contact-body {
-    height: 140vh;
-  }
   .contact-icons {
     font-size: 1rem;
   }

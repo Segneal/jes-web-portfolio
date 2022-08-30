@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import "../../../Assets/Styles/masonry.css";
-import * as api from "../../../services/galleries";
 import Loading from "../../UI/Loading";
 import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "react-query";
 import { formatUrl } from "../../../Assets/helpers/stringHelpers";
 import ImageModal from "../../UI/ImageModal";
 import { Image, useDisclosure } from "@chakra-ui/react";
+import useGalleries from "../../../services/useGalleries";
 
-const HOUR = 1000 * 3600;
 const PREFIX = "photoshoots/";
 
 export default function Album() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   const { albumName } = useParams();
-  const { data, isLoading } = useQuery("current-album", api.getGalleries, {
-    staleTime: HOUR,
-  });
+  const { data, isLoading } = useGalleries();
   const curAlbum = PREFIX + albumName;
   const [currentPhoto, setCurrentPhoto] = useState("");
   const openModal = (url) => {

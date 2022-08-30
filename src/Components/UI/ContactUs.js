@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import "../../Assets/Styles/contact.css";
 import Instagram from "../../Assets/Images/logos/Instagram.png";
 import Mail from "../../Assets/Images/logos/Mail.png";
+import { Navigate } from "react-router-dom";
 
 const SERVICE_ID = "service_ryj2mk3";
 const TEMPLATE_ID = "template_g3vsfqy";
@@ -16,7 +17,11 @@ export const ContactUs = () => {
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
       (result) => {
-        console.log(result.text);
+        result.status === 200 ? (
+          <Navigate to="/home" />
+        ) : (
+          console.log(result.status)
+        );
       },
       (error) => {
         console.log(error.text);
