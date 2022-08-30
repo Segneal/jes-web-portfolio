@@ -18,7 +18,7 @@ export const ContactUs = () => {
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
       (result) => {
         result.status === 200 ? (
-          <Navigate to="/home" />
+          <Navigate to="/" />
         ) : (
           console.log(result.status)
         );

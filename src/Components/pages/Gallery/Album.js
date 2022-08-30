@@ -16,6 +16,7 @@ export default function Album() {
   const { data, isLoading } = useGalleries();
   const curAlbum = PREFIX + albumName;
   const [currentPhoto, setCurrentPhoto] = useState("");
+  
   const openModal = (url) => {
     setCurrentPhoto(url);
     onOpen();
