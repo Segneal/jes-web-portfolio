@@ -18,3 +18,9 @@ export const formatUrl = (photo) => {
   let lowQualityThumnailUrl = BASE_URL + LOW_Q + photo.public_id;
   return { thumbnailUrl, lowQualityThumnailUrl };
 };
+
+export const filterSamples = (data) => {
+  return data.filter((photo) => {
+    return !photo.public_id.includes("cld-sample");
+  });
+};
