@@ -3,7 +3,7 @@
   flex-direction: row;
   place-items: center;
   justify-content: center;
-  width: 80%;
+  width: 90%;
   height: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -15,6 +15,7 @@
   font-size: 1.5rem;
   font-family: "Poppins", Arial, sans-serif;
   margin-bottom: 2rem;
+  min-width: 300px;
 }
 
 .contact-form {
@@ -65,15 +66,12 @@
 .contact-info-wrapper {
   padding-top: 2rem;
   height: 100%;
+  min-height: 500px;
   width: 50%;
   display: flex;
   flex-direction: column;
   text-align: center;
   background-color: #1e1e25;
-}
-.contact-button {
-  color: white;
-  border: 1px solid black;
 }
 
 .contact-info-wrapper p {
@@ -81,28 +79,41 @@
   color: var(--gray-100) !important;
 }
 
-.contact-icons {
+.contact-container {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 1.25rem;
-  width: 100%;
-  margin-top: 1.5rem;
-  place-items: center;
+  padding-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 350px;
 }
 
 .icons {
-  display: flex;
-  place-items: center;
-  margin-top: 1rem;
-  gap: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  display: block;
+  width: 48px;
+  height: 48px;
 }
 
 .icons img {
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
 }
 
+.contact-sending-message {
+  margin-top: 2rem;
+  width: 48px;
+  height: 48px;
+}
+.contact-sending-message img {
+  width: 100%;
+  height: 100%;
+}
+
+.messageSent {
+  font-size: 2rem;
+}
 @media screen and (max-width: 800px) {
   .contact-body {
     width: 90%;
@@ -118,26 +129,8 @@
     max-height: 50%;
   }
   .contact-icons {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 1.5rem;
+    display: block;
     width: 100%;
-    margin-top: 1.5rem;
-    place-items: center;
-  }
-
-  .icons {
-    gap: 20px;
-    display: flex;
-    place-items: center;
-    margin-top: 1rem;
-    gap: 5px;
-  }
-
-  .icons img {
-    width: 50px;
-    height: 50px;
   }
 
   .contact-input {
@@ -163,11 +156,15 @@
 }
 
 @media screen and (max-width: 480px) {
-  .contact-icons {
+  .contact-container {
+    width: 240px;
+  }
+  .contact-container h1 {
     font-size: 1rem;
   }
-  .icons img {
-    width: 40px;
-    height: 40px;
+
+  .icons {
+    width: 36px;
+    height: 36px;
   }
 }
