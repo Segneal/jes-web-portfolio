@@ -1,8 +1,8 @@
 import React from "react";
-import "react-lazy-load-image-component/src/effects/opacity.css";
 import { formatUrl } from "../../Assets/helpers/stringHelpers";
 import Loading from "../../Components/UI/Loading";
 import useGalleries from "../../services/useGalleries";
+import { motion } from "framer-motion";
 
 const HOME_GALLERIE = "jesi-website";
 
@@ -23,6 +23,13 @@ export default function Home() {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="grid-photo-wrapper flex">{displayPhotos()}</div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="grid-photo-wrapper flex"
+    >
+      {displayPhotos()}
+    </motion.div>
   );
 }

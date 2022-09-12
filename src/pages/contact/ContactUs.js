@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import "../../Assets/Styles/contact.css";
 import Instagram from "../../Assets/Images/logos/Instagram.png";
 import Mail from "../../Assets/Images/logos/Mail.png";
+import { motion } from "framer-motion";
 
 const SERVICE_ID = "service_ryj2mk3";
 const TEMPLATE_ID = "template_g3vsfqy";
@@ -10,7 +11,7 @@ const PUBLIC_KEY = "bgsv6X6__kLcYffCS";
 
 const defaultForm = { name: "", email: "", message: "" };
 
-export const ContactUs = () => {
+export default function ContactUs() {
   const form = useRef();
   const [submitForm, setSubmitForm] = React.useState(defaultForm);
   const [messageSent, setMessageSent] = React.useState(false);
@@ -37,7 +38,12 @@ export const ContactUs = () => {
   };
 
   return (
-    <div className="contact-body">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="contact-body"
+    >
       <div className="contact-form">
         <div className="contact-title">
           <h1>Escribime</h1>
@@ -98,6 +104,6 @@ export const ContactUs = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
-};
+}

@@ -1,9 +1,15 @@
 import React from "react";
 import portrait from "../../Assets/Images/MainPhoto.JPG";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <div className="about-wrapper">
+    <motion.div
+      className="about-wrapper"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="about-title">
         <h1>Mi Historia</h1>
       </div>
@@ -47,6 +53,6 @@ export default function About() {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

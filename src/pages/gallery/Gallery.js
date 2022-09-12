@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { formatThumnail } from "../../Assets/helpers/stringHelpers";
 import Loading from "../../Components/UI/Loading";
 import useGalleries from "../../services/useGalleries";
+import { motion } from "framer-motion";
 
 export default function Gallery() {
   const { data, isLoading } = useGalleries();
@@ -30,9 +31,14 @@ export default function Gallery() {
     <Loading />
   ) : (
     <>
-      <div id="swup" className="album-photo-wrapper transition-fade">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="album-photo-wrapper transition-fade"
+      >
         {showGalleries()}
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -6,7 +6,7 @@ import { formatUrl } from "../../Assets/helpers/stringHelpers";
 import ImageModal from "../gallery/ImageModal";
 import { Image, useDisclosure } from "@chakra-ui/react";
 import useGalleries from "../../services/useGalleries";
-
+import { motion } from "framer-motion";
 const PREFIX = "photoshoots/";
 
 export default function Album() {
@@ -47,7 +47,12 @@ export default function Album() {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="album-wrapper">
+    <motion.div
+      className="album-wrapper"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="album-header">
         <h1 className="album-title">{albumName}</h1>
         <button className="previous-page-button" onClick={() => navigate(-1)}>
@@ -61,6 +66,6 @@ export default function Album() {
         onOpen={onOpen}
         onClose={onClose}
       />
-    </div>
+    </motion.div>
   );
 }
