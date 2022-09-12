@@ -3,25 +3,32 @@ import emailjs from "@emailjs/browser";
 import "../../Assets/Styles/contact.css";
 import Instagram from "../../Assets/Images/logos/Instagram.png";
 import Mail from "../../Assets/Images/logos/Mail.png";
-import { Navigate } from "react-router-dom";
 
 const SERVICE_ID = "service_ryj2mk3";
 const TEMPLATE_ID = "template_g3vsfqy";
 const PUBLIC_KEY = "bgsv6X6__kLcYffCS";
 
+const defaultForm = { name: "", email: "", message: "" };
+
 export const ContactUs = () => {
   const form = useRef();
+  const [submitForm, setSubmitForm] = React.useState(defaultForm);
+  const [messageSent, setMessageSent] = React.useState(false);
+  const handleChange = (e) => {
+    setSubmitForm({ ...submitForm, [e.target.name]: e.target.value });
+  };
+
+  const setDefaultForm = () => {
+    setSubmitForm(defaultForm);
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
       (result) => {
-        result.status === 200 ? (
-          <Navigate to="/" />
-        ) : (
-          console.log(result.status)
-        );
+        console.log(result.text);
+        setMessageSent(true);
+        setDefaultForm();
       },
       (error) => {
         console.log(error.text);
@@ -41,21 +48,37 @@ export const ContactUs = () => {
             <input
               className="contact-input"
               type="text"
-              name="user_name"
+              name="name"
+              value={submitForm.name}
+              onChange={handleChange}
               required
             />
             <label>Email</label>
             <input
               className="contact-input"
+              onChange={handleChange}
               type="email"
-              name="user_email"
+              name="email"
+              value={submitForm.email}
               required
             />
             <label>Mensaje</label>
-            <textarea className="contact-input" name="message" required />
-            <button className="contact-button" type="submit" value="Send">
-              Enviar
-            </button>
+            <textarea
+              onChange={handleChange}
+              className="contact-input"
+              value={submitForm.message}
+              name="message"
+              required
+            />
+            {messageSent ? (
+              <div style={{ color: "green" }}>
+                <h1>Mensaje enviado</h1>
+              </div>
+            ) : (
+              <button className="contact-button" type="submit" value="Send">
+                Enviar
+              </button>
+            )}
           </div>
         </form>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import MenuIcon from "../../../Assets/Images/menu.png";
+import MenuIcon from "./menu.png";
 
 export default function MobileNavbar() {
   const [showNavBar, setShowNavBar] = useState(false);

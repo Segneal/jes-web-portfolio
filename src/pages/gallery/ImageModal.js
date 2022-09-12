@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Image,
-  Modal,
-  ModalContent,
-  ModalOverlay,
-} from "@chakra-ui/react";
+import { Image, Modal, ModalContent, ModalOverlay } from "@chakra-ui/react";
 
 export default function ImageModal({ currentPhoto, isOpen, onOpen, onClose }) {
   return (
@@ -23,9 +17,12 @@ export default function ImageModal({ currentPhoto, isOpen, onOpen, onClose }) {
         className="photo-modal-content"
         tabIndex="99999"
       >
-        <Box className="modal-image" bgColor="red.100">
-          <Image src={currentPhoto} alt=""></Image>
-        </Box>
+        <Image
+          className="modal-image"
+          bgColor="red.100"
+          src={currentPhoto}
+          alt=""
+        ></Image>
       </ModalContent>
     </Modal>
   );

@@ -1,6 +1,6 @@
 .grid {
-  --gap: 1.5em;
-  --columns: 5;
+  --gap: 0.5em;
+  --columns: 4;
   max-width: 90%;
   margin: 0 auto;
   padding-top: 2rem;
@@ -15,6 +15,9 @@
 }
 
 .grid-album-image {
+  display: block;
+
+  cursor: pointer;
   overflow: hidden;
   box-shadow: 1px 3px 7px black;
 }
@@ -56,13 +59,6 @@ img {
 }
 
 @media screen and (max-width: 1600px) {
-  .grid {
-    --gap: 1.5em;
-    --columns: 4;
-  }
-}
-
-@media screen and (max-width: 1300px) {
   .grid {
     --gap: 1.5em;
     --columns: 3;

@@ -1,13 +1,12 @@
 import "./Assets/Styles/styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Components/pages/Home";
-import About from "./Components/pages/About";
-import Event from "./Components/pages/Event";
-import Header from "./Components/UI/Header";
-import Gallery from "./Components/pages/Gallery/Gallery";
-import Album from "./Components/pages/Gallery/Album";
-import NavBar from "./Components/UI/navbar/NavBar";
-import { ContactUs } from "./Components/UI/ContactUs";
+import { ContactUs } from "./pages/contact/ContactUs";
+import Header from "./Components/header/Header";
+import NavBar from "./Components/navbar/NavBar";
+import Home from "./pages/home/Home";
+import About from "./pages/about/About";
+import Gallery from "./pages/gallery/Gallery";
+import Album from "./pages/album/Album";
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/events" element={<Event />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route exact path="/galleries" element={<Gallery />} />
             <Route path="galleries/:albumName" element={<Album />} />

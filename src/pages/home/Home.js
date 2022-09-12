@@ -1,7 +1,7 @@
 import React from "react";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 import { formatUrl } from "../../Assets/helpers/stringHelpers";
-import Loading from "../UI/Loading";
+import Loading from "../../Components/UI/Loading";
 import useGalleries from "../../services/useGalleries";
 
 const HOME_GALLERIE = "jesi-website";

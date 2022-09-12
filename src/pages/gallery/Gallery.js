@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Loading from "../../UI/Loading";
-import { formatThumnail } from "../../../Assets/helpers/stringHelpers";
-
-import useGalleries from "../../../services/useGalleries";
+import { formatThumnail } from "../../Assets/helpers/stringHelpers";
+import Loading from "../../Components/UI/Loading";
+import useGalleries from "../../services/useGalleries";
 
 export default function Gallery() {
   const { data, isLoading } = useGalleries();
@@ -21,7 +20,7 @@ export default function Gallery() {
             loading="lazy"
             alt={lowQualityThumnailUrl}
           ></img>
-          <h1>{albumName}</h1>
+          <h1 className="album-card-title">{albumName}</h1>
         </Link>
       );
     });
@@ -31,17 +30,9 @@ export default function Gallery() {
     <Loading />
   ) : (
     <>
-      <div className="album-photo-wrapper">{showGalleries()}</div>
+      <div id="swup" className="album-photo-wrapper transition-fade">
+        {showGalleries()}
+      </div>
     </>
   );
 }
-//  return (
-//    <div key={idx} className="album-container">
-//      <Link to={`galleries/${albumName}`}>
-//        <div className="thumbnail">
-//          <img src="" loading="lazy" alt=""></img>
-//        </div>
-//      </Link>
-//      <h1 className="thumbnail-title">{[album]}</h1>
-//    </div>
-//  );

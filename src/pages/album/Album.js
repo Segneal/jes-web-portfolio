@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-import "../../../Assets/Styles/masonry.css";
-import Loading from "../../UI/Loading";
+import "./masonry.css";
+import Loading from "../../Components/UI/Loading";
 import { useNavigate, useParams } from "react-router-dom";
-import { formatUrl } from "../../../Assets/helpers/stringHelpers";
-import ImageModal from "../../UI/ImageModal";
+import { formatUrl } from "../../Assets/helpers/stringHelpers";
+import ImageModal from "../gallery/ImageModal";
 import { Image, useDisclosure } from "@chakra-ui/react";
-import useGalleries from "../../../services/useGalleries";
+import useGalleries from "../../services/useGalleries";
 
 const PREFIX = "photoshoots/";
 
 export default function Album() {
+  const [currentPhoto, setCurrentPhoto] = useState({ current: "", id: "" });
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   const { albumName } = useParams();
-  const { data, isLoading } = useGalleries();
   const curAlbum = PREFIX + albumName;
-  const [currentPhoto, setCurrentPhoto] = useState("");
-  
-  const openModal = (url) => {
-    setCurrentPhoto(url);
+  const { data, isLoading } = useGalleries();
+
+  const openModal = (url, idx) => {
+    setCurrentPhoto({ current: url, id: idx });
     onOpen();
   };
 
@@ -27,17 +27,19 @@ export default function Album() {
     return data[curAlbum]?.map((photo, idx) => {
       let { thumbnailUrl, lowQualityThumnailUrl } = formatUrl(photo);
       return (
-        <div
+        <Image
           key={idx}
           className="grid-album-image"
-          onClick={() => openModal(thumbnailUrl)}
-        >
-          <Image
-            src={thumbnailUrl}
-            alt={lowQualityThumnailUrl}
-            loading="lazy"
-          ></Image>
-        </div>
+          onClick={() => openModal(thumbnailUrl, idx)}
+          href="currentPhoto"
+          style={{ visibility: "hidden" }}
+          onLoad={(currentPhoto) =>
+            (currentPhoto.target.style.visibility = "visible")
+          }
+          src={thumbnailUrl}
+          alt={lowQualityThumnailUrl}
+          loading="lazy"
+        ></Image>
       );
     });
   };
@@ -54,7 +56,7 @@ export default function Album() {
       </div>
       <div className="grid">{displayAlbum()}</div>
       <ImageModal
-        currentPhoto={currentPhoto}
+        currentPhoto={currentPhoto.current}
         isOpen={isOpen}
         onOpen={onOpen}
         onClose={onClose}
