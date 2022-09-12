@@ -21,6 +21,6 @@ export const formatUrl = (photo) => {
 
 export const filterSamples = (data) => {
   return data.filter((photo) => {
-    return !photo.public_id.includes("cld-sample");
+    return !photo.public_id.includes("sample");
   });
 };
