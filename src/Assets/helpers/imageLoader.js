@@ -11,17 +11,17 @@ const loadImage = (url) => {
 
 export const thumbnailLoader = async (thumnails) => {
   let promises = [];
-  promises = await thumnails?.forEach((thumnail) => {
-    thumnail !== undefined && loadImage(thumnail);
+  promises = await thumnails?.map((thumnail) => {
+    return thumnail !== undefined && loadImage(thumnail);
   });
   return await Promise.all(promises);
 };
 
 export const imageLoader = async (imageArr) => {
   let promises = [];
-  promises = await imageArr?.forEach((image) => {
+  promises = await imageArr?.map((image) => {
     let { thumbnailUrl } = formatUrl(image);
-    loadImage(thumbnailUrl);
+    return loadImage(thumbnailUrl);
   });
   return await Promise.all(promises);
 };
