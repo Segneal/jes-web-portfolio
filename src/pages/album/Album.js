@@ -7,9 +7,11 @@ import ImageModal from "../gallery/ImageModal";
 import { Image, useDisclosure } from "@chakra-ui/react";
 import useGalleries from "../../services/useGalleries";
 import { motion } from "framer-motion";
+import { imageLoader } from "../../Assets/helpers/imageLoader";
 const PREFIX = "photoshoots/";
 
 export default function Album() {
+  const [isImagesLoaded, setIsImagesLoaded] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState({ current: "", id: "" });
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
@@ -20,6 +22,10 @@ export default function Album() {
   const openModal = (url, idx) => {
     setCurrentPhoto({ current: url, id: idx });
     onOpen();
+  };
+
+  const preloadImages = async () => {
+    await imageLoader(data[curAlbum]).then(setIsImagesLoaded(true));
   };
 
   const displayAlbum = () => {
@@ -44,8 +50,15 @@ export default function Album() {
     });
   };
 
+  //checks if api call is finished
   return isLoading ? (
     <Loading />
+  ) : //checks if images are loaded
+  !isImagesLoaded ? (
+    <>
+      {preloadImages()}
+      <Loading />
+    </>
   ) : (
     <motion.div
       className="album-wrapper"
