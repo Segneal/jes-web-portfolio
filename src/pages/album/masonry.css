@@ -16,19 +16,16 @@
 
 .grid-album-image {
   display: block;
-
   cursor: pointer;
   overflow: hidden;
   box-shadow: 1px 3px 7px black;
 }
 
-.grid-album-image img {
-  display: block;
-  filter: brightness(100%);
-  transition: all 0.2s ease-in-out;
+.progressive-load img {
+  transition: transform 0.2s ease-in-out;
 }
 
-.grid-album-image:hover img {
+.progressive-load:hover img {
   filter: brightness(90%);
   transform: scale(1.2);
 }

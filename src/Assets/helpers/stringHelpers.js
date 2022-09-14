@@ -1,5 +1,5 @@
 //index 0 titulo del album , index 1 array con contenido
-const BASE_URL = "http://res.cloudinary.com/segneal/image/upload";
+const BASE_URL = "https://res.cloudinary.com/segneal/image/upload";
 const QUALITY = "/c_scale,w_2000/q_auto:eco/";
 const LOW_Q = "/e_blur:1000,q_1,f_auto/";
 

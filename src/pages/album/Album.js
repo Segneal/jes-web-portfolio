@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./masonry.css";
 import Loading from "../../Components/UI/Loading";
 import { useNavigate, useParams } from "react-router-dom";
@@ -7,7 +7,8 @@ import ImageModal from "../gallery/ImageModal";
 import { Image, useDisclosure } from "@chakra-ui/react";
 import useGalleries from "../../services/useGalleries";
 import { motion } from "framer-motion";
-import { imageLoader } from "../../Assets/helpers/imageLoader";
+import { cacheImages } from "../../Assets/helpers/imageLoader";
+import LazyLoadImage from "../../Components/LazyLoadImage";
 const PREFIX = "photoshoots/";
 
 export default function Album() {
@@ -25,7 +26,7 @@ export default function Album() {
   };
 
   const preloadImages = async () => {
-    await imageLoader(data[curAlbum]).then(setIsImagesLoaded(true));
+    await cacheImages(data[curAlbum]).then(setIsImagesLoaded(true));
   };
 
   const displayAlbum = () => {
@@ -33,32 +34,29 @@ export default function Album() {
     return data[curAlbum]?.map((photo, idx) => {
       let { thumbnailUrl, lowQualityThumnailUrl } = formatUrl(photo);
       return (
-        <Image
-          key={idx}
-          className="grid-album-image"
+        <div
           onClick={() => openModal(thumbnailUrl, idx)}
-          href="currentPhoto"
-          style={{ visibility: "hidden" }}
-          onLoad={(currentPhoto) =>
-            (currentPhoto.target.style.visibility = "visible")
-          }
-          src={thumbnailUrl}
-          alt={lowQualityThumnailUrl}
-          loading="lazy"
-        ></Image>
+          className="grid-album-image"
+        >
+          <LazyLoadImage
+            key={idx}
+            props={{
+              lowQualtySrc: lowQualityThumnailUrl,
+              highQualitySrc: thumbnailUrl,
+            }}
+          />
+        </div>
       );
     });
   };
 
+  useEffect(() => {
+    preloadImages();
+  }, [data]);
+
   //checks if api call is finished
   return isLoading ? (
     <Loading />
-  ) : //checks if images are loaded
-  !isImagesLoaded ? (
-    <>
-      {preloadImages()}
-      <Loading />
-    </>
   ) : (
     <motion.div
       className="album-wrapper"

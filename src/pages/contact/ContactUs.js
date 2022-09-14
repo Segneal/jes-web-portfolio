@@ -27,13 +27,10 @@ export default function ContactUs() {
     e.preventDefault();
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY).then(
       (result) => {
-        console.log(result.text);
         setMessageSent(true);
         setDefaultForm();
       },
-      (error) => {
-        console.log(error.text);
-      }
+      (error) => {}
     );
   };
 
