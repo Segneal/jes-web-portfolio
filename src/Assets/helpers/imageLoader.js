@@ -10,7 +10,7 @@ const loadImage = (url) => {
 };
 
 export const thumbnailLoader = async (thumnails) => {
-  const promises = [];
+  let promises = [];
   promises = await thumnails?.forEach((thumnail) => {
     thumnail !== undefined && loadImage(thumnail);
   });
@@ -18,7 +18,7 @@ export const thumbnailLoader = async (thumnails) => {
 };
 
 export const imageLoader = async (imageArr) => {
-  const promises = [];
+  let promises = [];
   promises = await imageArr?.forEach((image) => {
     let { thumbnailUrl } = formatUrl(image);
     loadImage(thumbnailUrl);
