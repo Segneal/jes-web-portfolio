@@ -10,8 +10,8 @@ export default function Header() {
           Irene Vallejo
         </Link>
       </div>
-      <div className="social-icon hvr-grow">
-        <a href="https://www.instagram.com/irene_moda_ybelleza/">
+      <div className="social-icon hvr-grownpm">
+        <a href="https://www.instagram.com/irenemoda_ybelleza/">
           <img src={Instagram} alt=""></img>
         </a>
       </div>
