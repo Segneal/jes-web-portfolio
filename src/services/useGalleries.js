@@ -3,7 +3,7 @@ import axios from "axios";
 import { groupBy } from "../Assets/helpers/arrayHelpers";
 import { filterSamples } from "../Assets/helpers/stringHelpers";
 
-const API_URL = "https://jesi-server.herokuapp.com/getGalleries";
+const API_URL = "https://jesi-web.onrender.com/getGalleries";
 
 export default function useGalleries() {
   return useQuery("allGalleries", async () => {
